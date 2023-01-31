@@ -1,8 +1,9 @@
 import React from 'react';
+import { Container, Typography, Box, Link } from "@mui/material";
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
-
+ 
 function App() {
   return (
     <div className="App">
@@ -14,41 +15,40 @@ function App() {
         </p>
         <span>
           <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
+          <Link
+            color="inherit"
+            href='https://reactjs.org/'
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
+            rel="noopener noreferrer">
+              React
+            </Link>
           <span>, </span>
-          <a
-            className="App-link"
+          <Link
+            color="inherit"
             href="https://redux.js.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
             Redux
-          </a>
+          </Link>
           <span>, </span>
-          <a
-            className="App-link"
+          <Link
+            color="inherit"
             href="https://redux-toolkit.js.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
             Redux Toolkit
-          </a>
+          </Link>
           ,<span> and </span>
-          <a
-            className="App-link"
+          <Link
+            color="inherit"
             href="https://react-redux.js.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
             React Redux
-          </a>
+          </Link>
         </span>
       </header>
     </div>

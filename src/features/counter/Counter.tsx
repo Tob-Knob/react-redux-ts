@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, TextField, Tooltip, Stack } from "@mui/material";
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -9,7 +10,7 @@ import {
   incrementIfOdd,
   selectCount,
 } from './counterSlice';
-import styles from './Counter.module.css';
+import theme from '../../theme';
 
 export function Counter() {
   const count = useAppSelector(selectCount);
@@ -20,49 +21,54 @@ export function Counter() {
 
   return (
     <div>
-      <div className={styles.row}>
-        <button
-          className={styles.button}
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          -
-        </button>
-        <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          +
-        </button>
-      </div>
-      <div className={styles.row}>
-        <input
-          className={styles.textbox}
-          aria-label="Set increment amount"
-          value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
-        />
-        <button
-          className={styles.button}
+      <Stack direction="row" spacing={2} alignItems="center" justifyContent="center">
+        <Tooltip title="Decrement value">
+          <Button
+            variant="contained"
+            onClick={() => dispatch(decrement())}
+          >
+            -
+          </Button>
+        </Tooltip>
+        <span>{count}</span>
+        
+        <Tooltip title="Increment value">
+          <Button
+            variant="contained"
+            onClick={() => dispatch(increment())}
+          >
+            +
+          </Button>
+        </Tooltip>
+      </Stack>
+      <Stack direction="row" spacing={2} justifyContent="center">
+        <Tooltip title="Set increment amount">
+          <TextField
+            variant="outlined"
+            label="Amount"
+            value={incrementAmount}
+            onChange={(e) => setIncrementAmount(e.target.value)}
+          />
+        </Tooltip>
+        <Button
+          variant="contained"
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
+        </Button>
+        <Button
+          variant="contained"
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
-        </button>
-        <button
-          className={styles.button}
+        </Button>
+        <Button
+          variant="contained"
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
           Add If Odd
-        </button>
-      </div>
+        </Button>
+      </Stack>
     </div>
   );
 }
